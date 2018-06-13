@@ -52,13 +52,10 @@ copy wslbridge-backend "%installdir%\bin"
 
 copy dash.exe "%installdir%\bin"
 copy regtool.exe "%installdir%\bin"
-copy zoo.exe "%installdir%\bin"
 
 rem create system config directory and copy config archive
 mkdir "%installdir%\usr\share\mintty\lang"
-copy lang.zoo "%installdir%\usr\share\mintty\lang"
 mkdir "%installdir%\usr\share\mintty\themes"
-copy themes.zoo "%installdir%\usr\share\mintty\themes"
 mkdir "%installdir%\usr\share\mintty\info"
 copy charnames.txt "%installdir%\usr\share\mintty\info"
 mkdir "%installdir%\usr\share\mintty\icon"
@@ -84,9 +81,7 @@ rmdir /S /Q "%smf%\context menu shortcuts"
 
 rem unpack config files in system config directory
 cd /D "%installdir%\usr\share\mintty\lang"
-"%installdir%\bin\zoo" xO lang
 cd /D "%installdir%\usr\share\mintty\themes"
-"%installdir%\bin\zoo" xO themes
 
 
 :migrate configuration

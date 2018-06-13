@@ -106,7 +106,8 @@ wslbridge-frontend:	wslbridge-source
 	cp wslbridge-$(wslbridge-commit)/out/wslbridge.exe bin/
 
 wslbridge-backend:	wslbridge-source
-	cd wslbridge-$(wslbridge-commit)/backend; wslbridge make
+	#cd wslbridge-$(wslbridge-commit)/backend; wslbridge make
+	cd wslbridge-$(wslbridge-commit)/backend; make
 	mkdir -p bin
 	cp wslbridge-$(wslbridge-commit)/out/wslbridge-backend bin/
 
@@ -127,8 +128,6 @@ mintty-build:
 	mkdir -p bin
 	cp mintty-$(minttyver)/bin/mintty.exe bin/
 	cp mintty-$(minttyver)/LICENSE LICENSE.mintty
-	cd mintty-$(minttyver)/lang; zoo a lang *.po; mv lang.zoo ../../
-	cd mintty-$(minttyver)/themes; zoo a themes *[!~]; mv themes.zoo ../../
 	# add charnames.txt to support "Character Info"
 	cd mintty-$(minttyver)/src; sh ./mknames
 	cp mintty-$(minttyver)/src/charnames.txt .
@@ -139,7 +138,6 @@ cygwin:
 	cp /bin/cygwin-console-helper.exe bin/
 	cp /bin/dash.exe bin/
 	cp /bin/regtool.exe bin/
-	cp /bin/zoo.exe bin/
 
 cop:	ver
 	mkdir -p rel
@@ -150,9 +148,6 @@ cop:	ver
 	cp bin/dash.exe rel/
 	cp bin/regtool.exe rel/
 	cp bin/mintty.exe rel/
-	cp bin/zoo.exe rel/
-	cp lang.zoo rel/
-	cp themes.zoo rel/
 	cp charnames.txt rel/
 	cp bin/wslbridge.exe rel/
 	cp bin/wslbridge-backend rel/
